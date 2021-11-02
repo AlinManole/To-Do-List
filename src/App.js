@@ -21,15 +21,18 @@ class App extends React.Component {
         console.log(this.state.tasks)
     }
 
+    deleteTask(e){
+      console.log('delete')
+    }
     
 
   render(){
     return(
-      <>
+      <div className="d-flex justify-content-center mx-auto flex-column">
       <h1 className="text-center p-5">To Do List</h1>
-      <Form addTask={this.addTask}/>
-      <List tasks={this.state.tasks} />
-      </>
+      <Form  addTask={this.addTask}/>
+      <List onClick={this.deleteTask} tasks={this.state.tasks} />
+      </div>
     )
   }
 }

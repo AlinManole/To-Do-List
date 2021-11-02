@@ -27,8 +27,8 @@ class Form  extends React.Component {
         // console.log(this.state.task)
         return (
             <>
-            <form className="form-inline d-flex justify-content-center  flex-row" onSubmit={this.handleSubmit}>
-                <div className="form-group mx-3 w-25 mb-2">
+            <form className="form-inline d-flex justify-content-center flex-row" onSubmit={this.handleSubmit}>
+                <div className="form-group mx-3 mb-2">
                     <input type="text" className="form-control " id="inputPassword2" placeholder="Task..." onChange={this.handleTaskDescriptionChange} />
                 </div>
                 <button type="submit" className="btn btn-primary mb-2">+</button>

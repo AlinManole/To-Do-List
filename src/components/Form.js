@@ -1,43 +1,53 @@
-import React from 'react'
+// Form.js
+//    -> Gere l'affichage du form
+//    -> Gere un state description de tache
+//    -> La remontée de données
+//        - A la soumission du form,
+//          on passe la valeur de l'input vers App.js qui va créer une nouvelle tache
 
-class Form  extends React.Component {
+import React, { Component } from 'react'
 
-    constructor(){
-        super()
+class Form extends Component {
+  constructor() {
+    super()
 
-        this.state = {
-            task: ""
-        }
-        this.handleTaskDescriptionChange = this.handleTaskDescriptionChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+    // state initial
+    this.state = {
+      task: ""
     }
 
-    handleTaskDescriptionChange(e){
-      this.setState({task : e.target.value})
-    }
+    this.handleTaskDescriptionChange = this.handleTaskDescriptionChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
 
-    handleSubmit(e){
-        e.preventDefault()
-        this.props.addTask(this.state.task)
-        this.setState({task: ""})
-      
-    }
+  handleTaskDescriptionChange(e) {
+    this.setState({ task: e.target.value })
+  }
 
-    render() {
-        // console.log(this.state.task)
-        return (
-            <>
-            <form className="form-inline d-flex justify-content-center flex-row" onSubmit={this.handleSubmit}>
-                <div className="form-group mx-3 mb-2">
-                    <input type="text" className="form-control " id="inputPassword2" placeholder="Task..." onChange={this.handleTaskDescriptionChange} />
-                </div>
-                <button type="submit" className="btn btn-primary mb-2">+</button>
-            </form>
-            </>
-        )
-    }
+  handleSubmit(e) {
+    e.preventDefault()
+    this.props.addTask(this.state.task)
+    this.setState({ task: "" })
+  }
 
-
+  render() {
+    return (
+      <form className="row mb-5" onSubmit={this.handleSubmit}>
+        <div className="col-11">
+          <input
+            type="text"
+            className="form-control col-8"
+            placeholder="Task description"
+            onChange={this.handleTaskDescriptionChange}
+            value={this.state.task}
+          />
+        </div>
+        <div className="col-1 d-flex justify-content-end">
+          <button type="submit" className="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    )
+  }
 }
 
 export default Form
